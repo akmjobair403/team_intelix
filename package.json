@@ -1,8 +1,16 @@
+
 {
   "name": "spider-bite-portfolio",
   "version": "2.0.0",
   "private": true,
-  "description": "Spider Bite portfolio with server-side admin authentication and shared content storage",
-  "scripts": { "start": "node server.js" },
-  "engines": { "node": ">=18" }
+  "description": "Spider Bite portfolio with Supabase shared content storage",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.57.0"
+  }
 }
