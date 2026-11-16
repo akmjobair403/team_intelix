@@ -1,4 +1,4 @@
-# Spider Bite — secure portfolio & admin CMS
+# TEAM INTELIX — secure portfolio & admin CMS
 
 A responsive two-page portfolio with a server-backed admin console. The visual design, member spotlight, projects, FAQs, contact routing and admin editing experience are retained. The admin login is now verified on the server; credentials are never embedded in browser JavaScript or HTML.
 
