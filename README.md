@@ -12,7 +12,7 @@ No third-party npm packages are required.
 ## Run locally (Linux)
 
 ```bash
-cd spider-bite-portfolio
+
 chmod +x setup-admin.sh
 ./setup-admin.sh
 npm start
