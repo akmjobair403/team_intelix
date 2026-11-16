@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#07070b" />
+    <title>TM INTELIX — Admin Console</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="admin-body">
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+    <div class="web-grid"></div>
+    <header class="admin-header">
+      <a class="brand" href="index.html"
+        ><span class="brand-mark">S<span>B</span></span
+        ><span>TM <b>INTELIX</b><small>CONTROL ROOM</small></span></a
+      >
+      <div id="adminHeaderActions" hidden>
+        <span class="admin-status"><i></i> SECURE SERVER SESSION</span
+        ><button class="btn btn-outline btn-small" id="logoutBtn">
+          Log out ↗
+        </button>
+      </div>
+      <a class="text-link" href="index.html">View site ↗</a>
+    </header>
+    <main class="admin-main section-wrap">
+      <section class="login-panel glass-panel" id="loginPanel">
+        <div class="eyebrow">RESTRICTED ACCESS / 00</div>
+        <h1>Welcome<br /><span class="gradient-text">back, operator.</span></h1>
+        <p>Authenticate to manage the intelix public presence.</p>
+        <form id="loginForm" class="admin-form">
+          <label
+            >USERNAME<input
+              id="loginUser"
+              autocomplete="username"
+              required
+              placeholder="Username" /></label
+          ><label
+            >PASSWORD<input
+              id="loginPass"
+              type="password"
+              autocomplete="current-password"
+              required
+              placeholder="Password"
+          /></label>
+          <p class="form-error" id="loginError"></p>
+          <button class="btn btn-primary" type="submit">
+            Enter control room ↗
+          </button>
+        </form>
+      </section>
+
+      <section id="dashboard" hidden>
+        <div class="dashboard-intro">
+          <div>
+            <div class="eyebrow">SYSTEM / CONTENT MANAGEMENT</div>
+            <h1>Control <span class="gradient-text">room.</span></h1>
+            <p>
+              Changes are saved securely to the server and published for every
+              visitor.
+            </p>
+          </div>
+          <div class="store-pill"><i></i> SERVER-SIDE STORAGE</div>
+        </div>
+        <div class="admin-tabs">
+          <button class="admin-tab active" data-tab="members">
+            Team members</button
+          ><button class="admin-tab" data-tab="projects">Projects</button
+          ><button class="admin-tab" data-tab="faqs">FAQ & contact</button>
+        </div>
+        <section class="admin-pane active" id="pane-members">
+          <div class="admin-columns">
+            <form id="memberForm" class="glass-panel admin-editor">
+              <div class="eyebrow">01 / TEAM DIRECTORY</div>
+              <h2 id="memberFormTitle">Add a member</h2>
+              <input type="hidden" id="memberId" /><label
+                >PROFILE IMAGE<input
+                  type="file"
+                  id="memberImage"
+                  accept="image/*" /><img
+                  class="upload-preview"
+                  id="memberPreview"
+                  alt="Profile preview"
+                  hidden
+              /></label>
+              <div class="form-two">
+                <label
+                  >FULL NAME<input
+                    id="memberName"
+                    required
+                    placeholder="Full name" /></label
+                ><label
+                  >ROLE / TITLE<input
+                    id="memberRole"
+                    required
+                    placeholder="e.g. Product Designer"
+                /></label>
+              </div>
+              <label
+                >BIO<textarea
+                  id="memberBio"
+                  rows="3"
+                  required
+                  placeholder="A short introduction..."
+                ></textarea></label
+              ><label
+                >SKILLS (COMMA-SEPARATED)<input
+                  id="memberSkills"
+                  placeholder="UI/UX, React, Strategy"
+              /></label>
+              <div class="form-two">
+                <label
+                  >GITHUB URL<input
+                    id="memberGithub"
+                    type="url"
+                    placeholder="https://github.com/..." /></label
+                ><label
+                  >LINKEDIN URL<input
+                    id="memberLinkedin"
+                    type="url"
+                    placeholder="https://linkedin.com/in/..."
+                /></label>
+              </div>
+              <div class="form-two">
+                <label
+                  >X / TWITTER URL<input
+                    id="memberX"
+                    type="url"
+                    placeholder="https://x.com/..." /></label
+                ><label
+                  >PORTFOLIO URL<input
+                    id="memberPortfolio"
+                    type="url"
+                    placeholder="https://..."
+                /></label>
+              </div>
+              <div class="form-actions">
+                <button class="btn btn-primary" type="submit">
+                  Save member ↗</button
+                ><button class="btn btn-quiet" type="button" id="cancelMember">
+                  Clear
+                </button>
+              </div>
+              <p class="form-note" id="memberFormNote"></p>
+            </form>
+            <div class="glass-panel admin-list">
+              <div class="list-heading">
+                <div>
+                  <div class="eyebrow">CURRENT ROSTER</div>
+                  <h2>Team members</h2>
+                </div>
+                <span id="memberCount" class="mono"></span>
+              </div>
+              <div id="memberAdminList"></div>
+            </div>
+          </div>
+        </section>
+        <section class="admin-pane" id="pane-projects">
+          <div class="admin-columns">
+            <form id="projectForm" class="glass-panel admin-editor">
+              <div class="eyebrow">02 / WORK ARCHIVE</div>
+              <h2 id="projectFormTitle">Add a project</h2>
+              <input type="hidden" id="projectId" /><label
+                >PROJECT THUMBNAIL<input
+                  type="file"
+                  id="projectImage"
+                  accept="image/*" /><img
+                  class="upload-preview"
+                  id="projectPreview"
+                  alt="Project preview"
+                  hidden /></label
+              ><label
+                >PROJECT TITLE<input
+                  id="projectTitle"
+                  required
+                  placeholder="Project name" /></label
+              ><label
+                >DESCRIPTION<textarea
+                  id="projectDescription"
+                  rows="4"
+                  required
+                  placeholder="What did the team build?"
+                ></textarea></label
+              ><label
+                >TECH STACK (COMMA-SEPARATED)<input
+                  id="projectStack"
+                  placeholder="Next.js, TypeScript, Supabase" /></label
+              ><label
+                >PROJECT URL<input
+                  id="projectUrl"
+                  type="url"
+                  placeholder="https://..."
+              /></label>
+              <div class="form-actions">
+                <button class="btn btn-primary" type="submit">
+                  Save project ↗</button
+                ><button class="btn btn-quiet" type="button" id="cancelProject">
+                  Clear
+                </button>
+              </div>
+            </form>
+            <div class="glass-panel admin-list">
+              <div class="list-heading">
+                <div>
+                  <div class="eyebrow">SELECTED WORK</div>
+                  <h2>Projects</h2>
+                </div>
+                <span id="projectCount" class="mono"></span>
+              </div>
+              <div id="projectAdminList"></div>
+            </div>
+          </div>
+        </section>
+        <section class="admin-pane" id="pane-faqs">
+          <div class="admin-columns">
+            <form id="faqForm" class="glass-panel admin-editor">
+              <div class="eyebrow">03 / KNOWLEDGE BASE</div>
+              <h2 id="faqFormTitle">Add a FAQ</h2>
+              <input type="hidden" id="faqId" /><label
+                >QUESTION<input
+                  id="faqQuestion"
+                  required
+                  placeholder="What do you do?" /></label
+              ><label
+                >ANSWER<textarea
+                  id="faqAnswer"
+                  rows="5"
+                  required
+                  placeholder="Write a helpful answer..."
+                ></textarea>
+              </label>
+              <div class="form-actions">
+                <button class="btn btn-primary" type="submit">Save FAQ ↗</button
+                ><button class="btn btn-quiet" type="button" id="cancelFaq">
+                  Clear
+                </button>
+              </div>
+            </form>
+            <div class="glass-panel admin-list">
+              <div class="eyebrow">PUBLIC FAQS</div>
+              <h2>Suggested questions</h2>
+              <div id="faqAdminList"></div>
+              <div class="settings-divider"></div>
+              <div class="eyebrow">CONTACT ROUTING</div>
+              <h2>Destination email</h2>
+              <form id="settingsForm" class="admin-form">
+                <label
+                  >TEAM GMAIL / EMAIL ADDRESS<input
+                    id="teamEmail"
+                    type="email"
+                    required
+                    placeholder="hello@example.com" /></label
+                ><button class="btn btn-outline" type="submit">
+                  Update destination ↗
+                </button>
+                <p class="form-note" id="settingsNote"></p>
+              </form>
+            </div>
+          </div>
+        </section>
+        <div class="admin-footer-note mono">
+          SPIDER_BITE CMS // LOCAL-FIRST CONTENT STORE // VERSION 1.0
+        </div>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
